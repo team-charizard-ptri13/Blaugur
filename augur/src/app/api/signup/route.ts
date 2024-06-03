@@ -6,12 +6,25 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     console.log('looking here', body);
-    const queryStr = 'INSERT INTO users (username, password) VALUES ($1, $2)';
+
+    const existingUserQuery = 'SELECT * FROM users WHERE username = $1';
+    const existingUser = await db.query(existingUserQuery, [body.username]);
+
+    if (existingUser.rows.length > 0) {
+      return NextResponse.json({ response: 'exists' }, { status: 400 });
+    }
+
     const VALUES = [body.username, body.password];
-    await db.query(queryStr, VALUES);
+    if(body.password !== ''){
+      const queryStr = 'INSERT INTO users (username, password) VALUES ($1, $2)';
+      await db.query(queryStr, VALUES);
+    }
+     
+      return NextResponse.json({ response: VALUES });
+   
   } catch (err) {
     console.error('An error occurred:', err);
     return NextResponse.json({ message: 'error' });
   }
-  return NextResponse.json({ message: 'User sucsessfully has signed up' });
+
 };

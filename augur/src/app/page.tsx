@@ -49,7 +49,9 @@ function Home() {
           alert('Invalid login');
           return;
         } else {
-          router.push('/feed');
+          // router.push('/feed');
+          router.push('/post');
+
         }
 
       } catch (error) {

@@ -2,7 +2,7 @@
 import React from 'react'
 import { useRouter } from "next/navigation";
 
-function signup() {
+function login() {
   const router = useRouter();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -19,22 +19,13 @@ function signup() {
     const loginData = { username: username, password: password };
     
     try{
-      const response = await fetch('/api/signup', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         body: JSON.stringify(loginData)
       })
-      .then(res=> res.json())
-      .then(resData => {
-        console.log('response in page.tsx', resData.response)
-        if(resData.response==='exists'){
-          alert('Username already exists')
-        } else if(resData.response[1] === ''){
-          alert('Please enter a password')
-        } else {
-          alert('Signup Successful')
-          router.push('/')
-        }
-      })
+      const data = await response.json();
+      if (data.message === true) router.push('/feed');
+      else alert('Invalid credentials.');
     } catch (err){
       console.log('An error occured in signup page', err)
     }
@@ -51,4 +42,4 @@ function signup() {
   )
 }
 
-export default signup
+export default login

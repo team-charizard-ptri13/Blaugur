@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.13",
+    "@types/jsonwebtoken": "^9.0.6",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
     "markdown-it": "^14.1.0",
     "mongoose": "^8.4.0",
     "next": "14.2.3",
@@ -35,6 +38,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.19",
+    "daisyui": "^4.11.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8.4.38",

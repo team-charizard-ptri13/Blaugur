@@ -1,6 +1,5 @@
 'use client';
 
-import { set } from "mongoose";
 import Link from "next/link"
 import React from "react";
 import { useState } from "react";
@@ -57,7 +56,6 @@ function Home() {
         console.error('An error occurred:', error);
       }
     };
-
 
 
   return <>

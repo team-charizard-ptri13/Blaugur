@@ -87,7 +87,7 @@ function Feed() {
               <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Sign In</button>
             </li>
             <li>
-              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Login</button>
+              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Log in</button>
             </li>
             <li>
               <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Feed</button>

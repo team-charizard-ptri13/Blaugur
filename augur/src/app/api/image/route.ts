@@ -94,30 +94,30 @@ export async function POST(request:any){
 //   }
 // }
 
-export async function GET(request:any) {
-  try {
+// export async function GET(request:any) {
+//   try {
     
-    const defaultImage = 'default_user_color.png'
+//     const defaultImage = 'default_user_color.png'
     
-    // Generate signed URLs for each blog's image
+//     // Generate signed URLs for each blog's image
 
-      const getObjectParams = {
-        Bucket: bucketName,
-        Key: defaultImage,
-      };
+//       const getObjectParams = {
+//         Bucket: bucketName,
+//         Key: defaultImage,
+//       };
       
-      const command = new GetObjectCommand(getObjectParams);
-      const url = await getSignedUrl(s3, command, { expiresIn: 9999 });
+//       const command = new GetObjectCommand(getObjectParams);
+//       const url = await getSignedUrl(s3, command, { expiresIn: 9999 });
       
-      // Add the signed URL to the blog object
-      // return { defaultImage_url: url };
+//       // Add the signed URL to the blog object
+//       // return { defaultImage_url: url };
 
-    return NextResponse.json({ message: 'All Blogs fetched successfully', defaultImage: url });
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: 'Error fetching all blogs' }, { status: 500 });
-  }
-}
+//     return NextResponse.json({ message: 'All Blogs fetched successfully', defaultImage: url });
+//   } catch (error) {
+//     console.error(error);
+//     return NextResponse.json({ message: 'Error fetching all blogs' }, { status: 500 });
+//   }
+// }
 
 
 

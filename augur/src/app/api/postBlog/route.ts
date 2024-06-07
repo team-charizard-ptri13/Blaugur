@@ -5,7 +5,7 @@ import Blog from '../../Model/Blog'
 
 export async function POST(req: NextRequest, res: NextResponse) {
     try {
-      connectDB();
+      await connectDB();
       const { title, blogBody, blogImage }: { title: string, blogBody: string, blogImage: string } = await req.json();  
       console.log(title, blogBody);
   

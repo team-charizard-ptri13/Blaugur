@@ -23,6 +23,11 @@ const blogSchema = mongoose.Schema(
         type: String,
       
     },
+
+    created_by: {
+        type: String,
+        
+    },
   },
 
   {

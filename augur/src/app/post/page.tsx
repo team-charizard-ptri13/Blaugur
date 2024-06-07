@@ -4,6 +4,7 @@ import Editor, { EditorContentChanged } from "../Editor";
 
 import dynamic from 'next/dynamic';
 
+
 const DynamicEditor = dynamic(() => import('../Editor'), { ssr: false });
 
 // const initialMarkdownContent = "**StartInitial** writing *something*...";
@@ -30,36 +31,62 @@ export default function Post() {
   const handleClick = async () => {
       // posting to s3
     if (file) {
-      await sendImg(file);
-      console.log('imageId looking on front end', imageId)
-      const blogPost = {title: blogTitle, blogBody: editorMarkdownValue, blogImage: imageId}; 
+      const data = await sendImg(file);
+      // console.log('imageId looking on front end', imageId)
+      const blogPost = {title: blogTitle, blogBody: editorMarkdownValue, blogImage: data}; 
       console.log('blogPost',blogPost)
 
       const response = await fetch('/api/postBlog', {
         method: 'POST',
         body: JSON.stringify(blogPost)
-      })
+      });
+
+      alert('Blog Posted Successfully');
+      // window.location.reload();
       
     } else {
       console.log('No file selected');
     }
   }
 
-  function sendImg(file: File) {
+  // function sendImg(file: File) {
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  
+  //   fetch('/api/image', {
+  //     method: 'POST',
+  //     body: formData,
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     // console.log('this is my response',data);
+  //     setImageId(data)
+  //     return data;
+  //   })
+  //   .catch(error => console.error('Error:', error));
+  // }
+
+  async function sendImg(file: File) {
     const formData = new FormData();
     formData.append('file', file);
   
-    fetch('/api/image', {
-      method: 'POST',
-      body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('this is my response',data);
-      setImageId(data)
-      return data;
-    })
-    .catch(error => console.error('Error:', error));
+    try {
+      const response = await fetch('/api/image', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch image data');
+      }
+  
+      const data = await response.json();
+      // setImageId(data); // Update state with image ID
+      return data; // Return the fetched data
+    } catch (error) {
+      console.error('Error:', error);
+      throw error; // Rethrow the error to be handled in the handleClick function
+    }
   }
 
 
@@ -73,7 +100,7 @@ export default function Post() {
 
       <div className="border-2 border-red-500 m-10">
         <DynamicEditor
-        // value={initialMarkdownContent}
+        value={editorMarkdownValue}
         onChange={onEditorContentChanged}
        /> 
      </div>

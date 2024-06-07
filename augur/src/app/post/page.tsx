@@ -30,8 +30,8 @@ export default function Post() {
   const handleClick = async () => {
       // posting to s3
     if (file) {
-      const imageID = await sendImg(file);
-      console.log('imageId', imageID)
+      await sendImg(file);
+      console.log('imageId looking on front end', imageId)
       const blogPost = {title: blogTitle, blogBody: editorMarkdownValue, blogImage: imageId}; 
       console.log('blogPost',blogPost)
 
@@ -59,7 +59,8 @@ export default function Post() {
     })
     .then(response => response.json())
     .then(data => {
-      // console.log('this is my response',data);
+      console.log('this is my response',data);
+      setImageId(data)
       return data;
     })
     .catch(error => console.error('Error:', error));

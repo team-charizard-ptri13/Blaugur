@@ -67,12 +67,6 @@ export async function POST(request:any){
     }
     
     const uniqueID = randomImageName();
-
-    // const newFile = {
-    //   ...file,
-    //   uniqueID: uniqueID,
-    // }
-
     
 
     console.log('looking here',file)

@@ -14,6 +14,10 @@ const blogSchema = mongoose.Schema(
         type: String,
         required: true,
     },
+    blog_image: {
+        type: String,
+        required: true,
+    },
 
     date_created: {
         type: String,
@@ -26,6 +30,8 @@ const blogSchema = mongoose.Schema(
   }
 );
 
-const Blog = mongoose.model("Blog", blogSchema);
+const Blog = mongoose.models.Blog || mongoose.model("Blog", blogSchema);
+
 
 export default Blog;
+

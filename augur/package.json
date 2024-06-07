@@ -9,14 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.588.0",
+    "@aws-sdk/s3-request-presigner": "^3.591.0",
     "@tailwindcss/typography": "^0.5.13",
     "@types/jsonwebtoken": "^9.0.6",
+    "aws-sdk": "^2.1633.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "markdown-it": "^14.1.0",
     "mongodb": "^6.7.0",
     "mongoose": "^8.4.1",
+    "multer": "^1.4.5-lts.1",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
     "node": "^20.14.0",
@@ -35,7 +39,9 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@types/formidable": "^3.4.5",
     "@types/markdown-it": "^14.1.1",
+    "@types/multer": "^1.4.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

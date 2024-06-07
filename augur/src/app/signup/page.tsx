@@ -43,11 +43,13 @@ function signup() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="username" id="" placeholder="username" />
-      <input type="text" name="password" placeholder="Password"/>
-      <input type="submit" />
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="username" id="" placeholder="username" />
+        <input type="text" name="password" placeholder="Password"/>
+        <input type="submit" />
+      </form>
+    </>
   )
 }
 

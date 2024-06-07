@@ -5,7 +5,7 @@ const connectDB = async () => {
     const conn = await mongoose.connect(
     
      // Mongo URI:
-      "MONGO URI"
+      "mongodb+srv://team-charizard:firedude1@testdb.1ydef0k.mongodb.net/"
 
     
     );

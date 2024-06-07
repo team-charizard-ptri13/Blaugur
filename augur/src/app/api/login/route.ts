@@ -3,6 +3,7 @@ import db from '../../../../SQL_DB';
 import JWT from 'jsonwebtoken';
 import { cookies } from 'next/headers'
 import dotenv from 'dotenv'
+import { describe } from 'node:test';
 dotenv.config({ path: '../../../.env'})
 
 export async function POST(req: NextRequest) {
@@ -29,6 +30,12 @@ export async function POST(req: NextRequest) {
         secure: true,
         maxAge: 3600000,
       });
+      
+      cookies().set('token', token, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600000,
+      });
       return NextResponse.json({ message: true });
     }
   } catch (err) {
@@ -36,3 +43,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'error during login' });
   }
 };
+

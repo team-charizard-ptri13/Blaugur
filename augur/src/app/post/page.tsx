@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from "react";
 import Editor, { EditorContentChanged } from "../Editor";
 
 import dynamic from 'next/dynamic';
+import { get } from "http";
 
 
 const DynamicEditor = dynamic(() => import('../Editor'), { ssr: false });
@@ -32,9 +33,15 @@ export default function Post() {
       // posting to s3
     if (file) {
       const data = await sendImg(file);
+
+      const username = await getUser();
+      console.log('what about here', username)
+
       // console.log('imageId looking on front end', imageId)
-      const blogPost = {title: blogTitle, blogBody: editorMarkdownValue, blogImage: data}; 
+      const blogPost = {title: blogTitle, blogBody: editorMarkdownValue, blogImage: data, created_by: username }; 
       console.log('blogPost',blogPost)
+
+  
 
       const response = await fetch('/api/postBlog', {
         method: 'POST',
@@ -49,22 +56,6 @@ export default function Post() {
     }
   }
 
-  // function sendImg(file: File) {
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  
-  //   fetch('/api/image', {
-  //     method: 'POST',
-  //     body: formData,
-  //   })
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     // console.log('this is my response',data);
-  //     setImageId(data)
-  //     return data;
-  //   })
-  //   .catch(error => console.error('Error:', error));
-  // }
 
   async function sendImg(file: File) {
     const formData = new FormData();
@@ -88,6 +79,17 @@ export default function Post() {
       throw error; // Rethrow the error to be handled in the handleClick function
     }
   }
+
+  async function getUser() {
+    try {
+      const response = await fetch('/api/protected')
+      const data = await response.json();
+      console.log('from fetch',data.username)
+      return data.username;
+    } catch (err){
+      return { message: 'Invalid token' };
+    }
+  };
 
 
   return (

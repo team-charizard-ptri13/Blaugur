@@ -21,12 +21,12 @@ const blogSchema = mongoose.Schema(
 
     date_created: {
         type: String,
-      
+        
     },
 
     created_by: {
         type: String,
-        
+        required: true,
     },
   },
 

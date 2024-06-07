@@ -22,8 +22,13 @@ export async function GET(req: NextRequest) {
     const userId = decoded.userId;
 
     console.log('user id: ', userId)
+    const query = `SELECT * FROM users WHERE id = $1`;
+    const values = [userId];
+    const result =  await db.query(query, values);
+    const username = result.rows[0].username;
+    console.log('result', result.rows[0])
 
-    return NextResponse.json({ message: true, userId })
+    return NextResponse.json({ message: true, userId, username: username })
   } catch (err) {
     console.error('An error occurred:', err);
     return NextResponse.json({ message: 'Invalid token' });

@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import db from '../../../../SQL_DB';
 import JWT from 'jsonwebtoken';
 import { cookies } from 'next/headers'
+import dotenv from 'dotenv'
+dotenv.config({ path: '../../../.env'})
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    console.log('looking here', body);
+    // console.log('looking here', body);
     
     const existingUserQuery = 'SELECT * FROM users WHERE username = $1';
     const existingUser = await db.query(existingUserQuery, [body.username]);
@@ -20,9 +22,11 @@ export async function POST(req: NextRequest) {
       throw new Error('env variable is set up wrong')
     }
 
-    const VALUES = [body.username, body.password];
+    const defaultImage = 'default_user_color.png'
+
+    const VALUES = [body.username, body.password, defaultImage];
     if(body.password !== ''){
-      const queryStr = 'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id';
+      const queryStr = 'INSERT INTO users (username, password, user_pic) VALUES ($1, $2, $3) RETURNING id';
       const result = await db.query(queryStr, VALUES);
       const id = result.rows[0].id;
       const token = JWT.sign({ userId: id }, SECRET_KEY, {

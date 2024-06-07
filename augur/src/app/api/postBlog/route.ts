@@ -1,21 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '../../lib/MONGO_DB'
 import Blog from '../../Model/Blog'
+import { create } from 'domain';
 
 
 export async function POST(req: NextRequest, res: NextResponse) {
     try {
-      connectDB();
-      const { title, blogBody, blogImage }: { title: string, blogBody: string, blogImage: string } = await req.json();  
-      console.log(title, blogBody);
+      await connectDB();
+      const { title, blogBody, blogImage, created_by }: { title: string, blogBody: string, blogImage: string, created_by: string } = await req.json();  
+      // console.log(title, blogBody);
+      // console.log('is my created by here?: ', created_by)
   
-      const user_name = 'test';  
-  
+      const currentDate = new Date();
+      
+      
       if (!title || !blogBody) {
         return NextResponse.json({ message: 'Both title, blogBody, and blogImage are required' }, { status: 400 });
       }
   
-      const newBlogPost = new Blog({ user_name, blog_title: title, blog_body: blogBody, blog_image: blogImage});
+      const newBlogPost = new Blog({ blog_title: title, blog_body: blogBody, blog_image: blogImage,date_created: currentDate, created_by: created_by});
+      console.log('full post created',newBlogPost)
       const savedBlog = await newBlogPost.save();
       
       return NextResponse.json({ message: 'Blog POST CREATED SUCCESSFULLY', data: savedBlog });

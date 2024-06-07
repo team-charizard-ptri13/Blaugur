@@ -2,9 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import db from '../../../../SQL_DB';
 import JWT from 'jsonwebtoken';
 import { cookies } from 'next/headers'
-import dotenv from 'dotenv'
 import { describe } from 'node:test';
-dotenv.config({ path: '../../../.env'})
 
 export async function POST(req: NextRequest) {
   try {

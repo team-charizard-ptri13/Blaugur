@@ -97,7 +97,7 @@ function Feed() {
                   </div>
                   <h2 className="card-title">{post.blog_title}</h2>
                   <p className="text-sm text-gray-500">
-                    By placeholder on {post.createdAt}
+                    By {post.created_by} on {post.date_created}
                   </p>
                   <p>{truncateText(post.blog_body,100)}</p>
                   <div className="card-actions justify-end">

@@ -30,6 +30,12 @@ export async function POST(req: NextRequest) {
         secure: true,
         maxAge: 3600000,
       });
+      
+      cookies().set('token', token, {
+        httpOnly: true,
+        secure: true,
+        maxAge: 3600000,
+      });
       return NextResponse.json({ message: true });
     }
   } catch (err) {

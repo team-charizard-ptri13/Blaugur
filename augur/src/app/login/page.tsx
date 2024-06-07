@@ -32,21 +32,13 @@ function login() {
     
   };
 
-  function addCol(){
-    fetch('/api/login', {
-      method: 'GET'
-    })
-  }
 
   return (
-    <>
     <form onSubmit={handleSubmit}>
       <input type="text" name="username" id="" placeholder="username" />
       <input type="text" name="password" placeholder="Password"/>
       <input type="submit" />
     </form>
-
-    </>
   )
 }
 

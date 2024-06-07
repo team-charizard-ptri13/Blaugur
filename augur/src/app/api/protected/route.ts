@@ -26,6 +26,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ message: true, userId })
   } catch (err) {
     console.error('An error occurred:', err);
-    return NextResponse.json({ message: 'error during account settings' });
+    return NextResponse.json({ message: 'Invalid token' });
   }
 };

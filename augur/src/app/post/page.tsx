@@ -43,10 +43,6 @@ export default function Post() {
     } else {
       console.log('No file selected');
     }
-    
-
-
-
   }
 
   function sendImg(file: File) {

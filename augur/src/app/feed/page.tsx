@@ -9,13 +9,15 @@ import Image from 'next/image';
 import logo from '../../assets/blaugur-logo-blue.png'
 
 function Feed() {
-  const [posts, setPosts] = useState([{
-    blog_url: logo,
-    blog_title: 'Test Title Case',
-    blog_body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque leo quam, sit amet tempus odio imperdiet nec. Vestibulum sit amet tincidunt odio, eget malesuada dui. Curabitur fermentum a sem consequat faucibus. Aliquam erat volutpat. Sed non ligula et massa malesuada malesuada. Etiam a leo velit. Nulla in tincidunt dui. Phasellus fermentum feugiat metus, aliquam ornare lectus consequat et. Duis ac felis sit amet eros euismod luctus non eu arcu. Nunc aliquet aliquam lectus id tincidunt. Sed eu mi molestie, tincidunt mi vel, vehicula ante. Fusce efficitur ipsum sit amet viverra pharetra.',
-    created_by: 'TestUser',
-    date_created: 'Today'
-  }]);
+  const [posts, setPosts] = useState([
+    // {
+    // blog_url: logo,
+    // blog_title: 'Test Title Case',
+    // blog_body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus scelerisque leo quam, sit amet tempus odio imperdiet nec. Vestibulum sit amet tincidunt odio, eget malesuada dui. Curabitur fermentum a sem consequat faucibus. Aliquam erat volutpat. Sed non ligula et massa malesuada malesuada. Etiam a leo velit. Nulla in tincidunt dui. Phasellus fermentum feugiat metus, aliquam ornare lectus consequat et. Duis ac felis sit amet eros euismod luctus non eu arcu. Nunc aliquet aliquam lectus id tincidunt. Sed eu mi molestie, tincidunt mi vel, vehicula ante. Fusce efficitur ipsum sit amet viverra pharetra.',
+    // created_by: 'TestUser',
+    // date_created: 'Today'
+    // }
+]);
 
   useEffect(() => {
     fetch('/api/feed')
@@ -111,7 +113,7 @@ function Feed() {
 
                 <div className="card-body">
                   <div>
-                    <Image src={post.blog_url} alt="blog post image" className="rounded-t-lg" style={{ width: '150px', height: '150px', objectFit: 'cover' }}/>
+                    <img src={post.blog_url} alt="blog post image" className="rounded-t-lg" style={{ width: '150px', height: '150px', objectFit: 'cover' }}/>
                   </div>
                   <h2 className="text-3xl font-semibold">{post.blog_title}</h2>
                   <p className="text-sm">

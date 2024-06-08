@@ -82,9 +82,10 @@ export default function Post() {
 
   async function getUser() {
     try {
+      console.log('im hit')
       const response = await fetch('/api/protected')
       const data = await response.json();
-      console.log('from fetch',data.username)
+      console.log('from fetch in get user',data.username)
       return data.username;
     } catch (err){
       return { message: 'Invalid token' };

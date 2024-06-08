@@ -60,6 +60,15 @@ function Feed() {
   }
 
 
+  function goToPost(postId:string) {
+    // reroute to post page
+    router.push(`/feed/${postId}`);
+
+
+    // console.log('Post ID:', postId);
+  };
+
+
 
 
   return (
@@ -101,7 +110,7 @@ function Feed() {
                   </p>
                   <p>{truncateText(post.blog_body,100)}</p>
                   <div className="card-actions justify-end">
-                    <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Read More</button>
+                  <button onClick={() => goToPost(post._id)} className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Read More</button>
                   </div>
                 </div>
               </div>

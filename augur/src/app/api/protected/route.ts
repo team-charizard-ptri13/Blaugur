@@ -8,15 +8,17 @@ dotenv.config({ path: '../../../.env'})
 
 //THIS IS THE PROTECTED ROUTE THAT ALLOWS US TO GET THE USERNAME, USERID of the user
 
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     const cookieStore = cookies();
     const tokenCookie = cookieStore.get('token');
+    console.log('tokenCookie', tokenCookie)
     if (!tokenCookie) {
         // what to do if we don't have a cookie
         return NextResponse.json({ message: 'Token is missing' }, { status: 401 })
     }
     const token = tokenCookie.value
+    console.log('token', token)
     const SECRET_KEY = process.env.SECRET_KEY;
     if (!SECRET_KEY) {
         throw new Error('env variable is set up wrong')

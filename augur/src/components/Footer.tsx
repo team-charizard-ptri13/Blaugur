@@ -8,12 +8,12 @@ const Footer = () => {
     <footer className="bg-secondarycolor text-primarycolor py-12">
       <div className="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:text-left mb-8 md:mb-0">
-          <h2 className="text-4xl font-literata font-semibold">Augur</h2>
+          <h2 className="text-4xl font-literata font-semibold">Blaugur</h2>
           <p className="mt-16 font-extralight font-lexend">&copy; 2024 Company. All Rights Reserved.</p>
         </div>
         <div className="text-center md:text-left mb-8 md:mb-0 font-lexend">
           <p className="font-extralight">Email</p>
-          <a href="mailto:hello@augur.com" className="font-normal text-xl">hello@augur.com</a>
+          <a href="mailto:hello@augur.com" className="font-normal text-xl">hello@blaugur.com</a>
           <p className="mt-8 font-extralight">Contact Us</p>
           <a href="tel:+19998887654" className="text-xl">+1 999 888-7654</a>
         </div>

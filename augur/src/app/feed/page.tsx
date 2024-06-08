@@ -131,7 +131,7 @@ function Feed() {
 
           {/* Blog Feed */}
           <div className="grid grid-cols-1 gap-4">
-            {posts.map((post:any, index:number) => (
+            {posts.slice().reverse().map((post:any, index:number) => (
               <div key={index} className="card shadow-lg hover:shadow-2xl transition-shadow duration-300">
 
                 <div className="card-body">
@@ -150,6 +150,8 @@ function Feed() {
               </div>
             ))}
           </div>
+
+          
 
           {/* Divider */}
           <div className="divider my-8"></div>

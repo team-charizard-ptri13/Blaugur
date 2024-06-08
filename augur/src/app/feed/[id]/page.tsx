@@ -11,6 +11,7 @@ import { The_Nautigal } from 'next/font/google';
 import Markdown from 'react-markdown'
 import ReactMarkdown from 'react-markdown'
 import marked from 'marked';
+// import Markdown2 from 'https://esm.sh/react-markdown@9';
 
 function BlogDetail() {
   const router = useRouter();
@@ -66,7 +67,6 @@ function BlogDetail() {
 
 
 
-
   return (
     <div className="min-h-screen bg-base-200 p-4">
       <header className="bg-primary text-primary-content p-4 rounded-lg mb-4 flex justify-between items-center">
@@ -75,15 +75,18 @@ function BlogDetail() {
       </header>
 
       <div className="card bg-base-100 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-        <div className="card-body">
-          <h2 className="card-title">{blog.blog_title}</h2>
+        <div className="card-body flex flex-col items-center justify-center">
+          <h2 className="text-5xl">{blog.blog_title}</h2>
           <p className="text-sm text-gray-500">
             By {blog.created_by} on {new Date(blog.createdAt).toLocaleDateString()}
           </p>
           <div>
-            <img src={blog.blog_url} alt="Blog Image" className="rounded-lg w-full h-60 object-cover" />
+            <img src={blog.blog_url} alt="Blog Image" className="rounded-lg w-full h-96 w-96 object-fit" />
           </div>
-          <div>{blog.blog_body}</div>
+
+          {/* <div>{blog.blog_body}</div> */}
+           <ReactMarkdown>{blog.blog_body}</ReactMarkdown>
+
         </div>
       </div>
     </div>

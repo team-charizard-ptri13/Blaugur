@@ -8,6 +8,7 @@ function BlogDetail() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
+  
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 

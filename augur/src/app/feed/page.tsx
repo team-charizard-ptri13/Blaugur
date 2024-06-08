@@ -53,9 +53,7 @@ function Feed() {
   //   },
   // ];
 
-  const handleHome = () => {
-    router.push('/')
-  }
+ 
 
   const handleSignIn = () => {
     router.push('/signup');

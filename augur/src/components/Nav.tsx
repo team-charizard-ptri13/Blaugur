@@ -12,7 +12,7 @@ const Nav = () => {
   return (
     <div className="bg-backgroundcolor text-primarycolor px-12">
       <nav className="flex justify-between items-center p-4">
-        <a href="/" className="text-3xl font-literata font-semibold no-underline">Augur</a>
+        <a href="/" className="text-3xl font-literata font-semibold no-underline">Blaugur</a>
         <div className="flex gap-4">
           <button onClick={handleLoginClick} className="border-none rounded-full py-3 px-8 text-base transition-colors duration-300 transform hover:scale-110 font-lexend cursor-pointer">
             Log In

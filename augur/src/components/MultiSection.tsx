@@ -1,15 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
-import img1 from './images/img-01.png'; // Replace with actual paths
-import img2 from './images/img-02.png'; // Replace with actual paths
-import img3 from './images/img-03.png'; // Replace with actual paths
-import img4 from './images/img-04.png'; // Replace with actual paths
+import img1 from './images/img-01.png';
+import img2 from './images/img-02.png';
+import img3 from './images/img-03.png';
+import img4 from './images/img-04.png';
 
 interface SectionProps {
   title: string;
   subtitle: string;
   linkText: string;
-  imgSrc: any; // Use StaticImageData for Next.js images
+  imgSrc: any;
 }
 
 const Section: React.FC<SectionProps> = ({ title, subtitle, linkText, imgSrc }) => (

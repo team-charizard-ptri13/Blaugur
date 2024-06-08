@@ -4,23 +4,19 @@ const blogSchema = mongoose.Schema(
   {
     username: {
       type: String,
-      
     },
     blog_title: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     blog_body: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
-
     date_created: {
-        type: String,
-      
+      type: String,
     },
   },
-
   {
     timestamps: true,
   }

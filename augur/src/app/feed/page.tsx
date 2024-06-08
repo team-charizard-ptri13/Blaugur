@@ -1,28 +1,38 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import 'daisyui/dist/full.css';
 
 function Feed() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
+      console.log('Fetching all blogs');
       try {
         const response = await fetch('/api/getBlogs');
         const data = await response.json();
         if (response.ok) {
+          console.log('Blogs data:', data);
           setBlogs(data.data);
         } else {
           console.error('Failed to fetch blogs:', data.message);
         }
       } catch (error) {
         console.error('An error occurred:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchBlogs();
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen bg-base-200 p-4">
@@ -60,7 +70,9 @@ function Feed() {
                     </p>
                     <p>{post.blog_body}</p>
                     <div className="card-actions justify-end">
-                      <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Read More</button>
+                      <Link href={`/feed/${post._id}`}>
+                        <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Read More</button>
+                      </Link>
                     </div>
                   </div>
                 </div>

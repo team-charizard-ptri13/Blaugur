@@ -1,10 +1,12 @@
 'use client'
 import React from 'react'; 
 import { ChangeEvent, useState } from "react";
+import { useRouter } from 'next/navigation';
 
 const update = () => {
     const [updatedUserName, setUpdatedUserName] = useState<string>("");
     const [file, setFile] = useState(null);
+    const router = useRouter();
     
 
     const onUsernameChange =  (event: ChangeEvent<HTMLInputElement>) => {
@@ -75,23 +77,47 @@ const update = () => {
                 body: JSON.stringify(userInfoObj)
             })
           }
-
-        
     }
   
 
-   
+   const onBackToFeed = () => {
+      router.push('/feed')
+   }
 
     return (
+      <div className="flex flex-col  bg-base-200 p-4 ">
 
-        <div className='flex border-2 flex-col border-red-500 h-screen justify-center items-center'>
-            <div className='flex flex-col border-2 h-2/4 w-2/4'>
-            <form className="border-2 border-red-500 m-10">
-                <input type="text" id="name" name="name" placeholder='User Name' value={updatedUserName} onChange={onUsernameChange} /><br />
-                <input type="file" placeholder="Select Post Image" onChange={handleFileChange}/>
-            </form>
-            <button onClick={handleClick} className="border-2 border-red-500 p-1 m-10 rounded ">Submit Blog</button>
+      <header className="bg-primarycolor text-primary-content p-4 rounded-lg  flex justify-between items-center ">
+            <div>
+              <h1 className="text-3xl font-bold hover:text-yellow-300" onClick={onBackToFeed} >Blaugur</h1>
+              <p className="text-sm">A Library For Devs</p>
             </div>
+          </header>
+
+          
+        <div className='flex border-2 flex-col min-h-screen justify-center items-center rounded border-none	'>
+          
+            <div className='flex flex-col border-4 h-2/4 w-2/4 font-literata bg-secondarycolor rounded-3xl p-8 border-double 	'>
+            <form className="border-2 border-backgroundcolor rounded ">
+                <input className="w-full "type="text" id="name" name="name" placeholder='New Username' value={updatedUserName} onChange={onUsernameChange} /><br />
+            </form>
+            <form className="border-2 border-inherit rounded flex flex-col mt-5 ">
+            <label className='text-center' htmlFor='file'>Select New Profile Pic</label>
+             <input type="file" title="Update Profile Picture" name="profile picture" onChange={handleFileChange}/>
+            </form>
+
+            <button onClick={handleClick} className="border-2 p-1  mt-5 rounded "> Update Account</button>
+            <button onClick={onBackToFeed} className="border-2 border-red-500 p-1 mt-5 rounded "> Back To Feed</button>
+            </div>
+        </div>
+        
+        {/* Footer */}
+        <footer className="footer footer-center p-4 bg-primary text-primary-content bg-primarycolor">
+            <div>
+              <p>&copy; 2024 Blaugur. All rights reserved.</p>
+            </div>
+          </footer>
+       
         </div>
     )
 }

@@ -42,7 +42,9 @@ function Feed() {
     // },
   // ];
 
-  
+  const handleHome = () => {
+    router.push('/')
+  }
 
   const handleSignIn = () => {
     router.push('/signup');
@@ -51,6 +53,20 @@ function Feed() {
   const handleLogin = () => {
     router.push('/login');
   };
+
+  const handleUpdate = () => {
+    router.push('/update');
+  };
+
+  const handleFeed = () => {
+    router.push('/feed');
+  };
+
+  const handlePost = () => {
+    router.push('/post');
+  };
+
+
 
   function truncateText(text:string, maxLength:number) {
     if (text.length <= maxLength) {
@@ -123,6 +139,9 @@ function Feed() {
         <div className="drawer-side">
           <label htmlFor="my-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content space-y-4">
+           <li>
+              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300" onClick={handleHome}>Home</button>
+            </li>
             <li>
               <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300" onClick={handleSignIn}>Sign In</button>
             </li>
@@ -130,7 +149,13 @@ function Feed() {
               <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300" onClick={handleLogin}>Login</button>
             </li>
             <li>
-              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Feed</button>
+              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300" onClick={handleFeed}>Feed</button>
+            </li>
+            <li>
+              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300" onClick={handlePost}>Post</button>
+            </li>
+            <li>
+              <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300" onClick={handleUpdate}>Settings</button>
             </li>
           </ul>
         </div>

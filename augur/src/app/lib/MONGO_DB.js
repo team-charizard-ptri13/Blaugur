@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = "mongodb+srv://root:root@cluster0.v77dydh.mongodb.net/";
+const MONGO_URI = "mongodb+srv://team-charizard:firedude1@testdb.1ydef0k.mongodb.net/";
 
 if (!MONGO_URI) {
   throw new Error(

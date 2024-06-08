@@ -89,6 +89,15 @@ function Feed() {
   }
 
 
+  function goToPost(postId:string) {
+    // reroute to post page
+    router.push(`/feed/${postId}`);
+
+
+    // console.log('Post ID:', postId);
+  };
+
+
 
 
   return (
@@ -122,7 +131,7 @@ function Feed() {
 
           {/* Blog Feed */}
           <div className="grid grid-cols-1 gap-4">
-            {posts.map((post:any, index:number) => (
+            {posts.slice().reverse().map((post:any, index:number) => (
               <div key={index} className="card shadow-lg hover:shadow-2xl transition-shadow duration-300">
 
                 <div className="card-body">
@@ -135,12 +144,14 @@ function Feed() {
                   </p>
                   <p>{truncateText(post.blog_body,100)}</p>
                   <div className="card-actions justify-end">
-                    <button className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Read More</button>
+                  <button onClick={() => goToPost(post._id)} className="btn bg-blue-900 text-white hover:bg-blue-700 transition-shadow duration-300">Read More</button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          
 
           {/* Divider */}
           <div className="divider my-8"></div>

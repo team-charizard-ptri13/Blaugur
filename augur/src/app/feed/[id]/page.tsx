@@ -15,7 +15,6 @@ import marked from 'marked';
 function BlogDetail() {
   const router = useRouter();
 
-  // const id = searchParams.get('id');
   
   const [blog, setBlog] = useState<Blog>({_id: {}, blog_title: '', blog_body: '', blog_image: '', created_by: '', date_created: '', blog_url: '', createdAt: '', updatedAt: '', __v: 0});
   const [loading, setLoading] = useState(true);
@@ -85,15 +84,11 @@ function BlogDetail() {
             <img src={blog.blog_url} alt="Blog Image" className="rounded-lg w-full h-60 object-cover" />
           </div>
           <div>{blog.blog_body}</div>
-
-
-            {/* <ReactMarkdown>{blog.blog_body}</ReactMarkdown> */}
         </div>
       </div>
     </div>
   );
 
-//   npm install react-markdown
 
 }
 
